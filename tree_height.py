@@ -37,6 +37,23 @@ def create_tree(n):
 
     return root
 
+def create_tree_file(n, file):
+    parent_index=[]
+    nodes={}
+    values = file.readline().split()
+    for i in range(n):
+        parent_index.append(int(values[i]))
+        nodes[i] = Node(i)
+          
+    for i in range(n):
+        if parent_index[i] != -1:
+            nodes[parent_index[i]].add_child(nodes[i])
+        
+        else:
+            root = nodes[i]
+
+    return root
+
 
 def main():
     print("Input Mode: ")
@@ -55,7 +72,10 @@ def main():
             print("Filename containing a is not allowed")
             return
         file = open(filename, 'r')
-        fileRead = file.read()
+        n = file.readline()
+        root = create_tree_file(n, file)
+        height = compute_height(root)
+        print(height)
     # implement input form keyboard and from files
     
     # let user input file name to use, don't allow file names with letter a
