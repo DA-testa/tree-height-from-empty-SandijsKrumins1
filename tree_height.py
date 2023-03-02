@@ -4,6 +4,7 @@ import sys
 import threading
 import numpy
 
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -71,8 +72,9 @@ def main():
         if "a" in filename:
             print("Filename containing a is not allowed")
             return
-        file = open(filename, 'r')
-        n = file.readline()
+        folder = "test\ "
+        file = open(folder.strip() + filename, 'r')
+        n = int(file.readline())
         root = create_tree_file(n, file)
         height = compute_height(root)
         print(height)
