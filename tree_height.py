@@ -72,8 +72,8 @@ def main():
         if "a" in filename:
             print("Filename containing a is not allowed")
             return
-        folder = "test\ "
-        file = open(folder.strip() + filename+"_", 'r')
+        folder = './test/'
+        file = open(folder + filename, 'r')
         n = int(file.readline())
         root = create_tree_file(n, file)
         height = compute_height(root)
